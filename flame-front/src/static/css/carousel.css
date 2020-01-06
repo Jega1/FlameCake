@@ -1,0 +1,8 @@
+.carousel-item {
+	position: relative;
+	display: none;
+	float: left;
+	width: 100% !important;
+	height: 70vh;
+	margin: auto;
+}

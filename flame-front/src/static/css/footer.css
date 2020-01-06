@@ -1,0 +1,39 @@
+.footerCap {
+	padding: 0;
+	margin: auto;
+	width: 100%;
+	height: auto;
+	background: #262626;
+	display: flex;
+	justify-content: space-around;
+}
+
+.fooboo {
+	padding: 3rem 0;
+}
+.fooboo h3 {
+	color: aliceblue;
+}
+.fooboo p {
+	color: aliceblue;
+}
+
+.copy-right {
+	width: 100%;
+	height: 10vh;
+	background: #141414;
+}
+
+.copy-right h4 {
+	text-align: center;
+}
+@media (max-width: 991px) {
+	.footerCap {
+		display: block;
+	}
+
+	.fooboo {
+		padding-top: 2rem;
+		text-align: center;
+	}
+}
