@@ -1,5 +1,5 @@
 {
-  "name": "smart-back",
+  "name": "flame-back",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -25,13 +25,13 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jega1/smart-back.git"
+    "url": "git+https://github.com/Jega1/flame-back.git"
   },
-  "author": "",
+  "author": "Jega",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Jega1/smart-back/issues"
+    "url": "https://github.com/Jega1/flame-back/issues"
   },
-  "homepage": "https://github.com/Jega1/smart-back#readme",
+  "homepage": "https://github.com/Jega1/flame-back#readme",
   "description": ""
 }
