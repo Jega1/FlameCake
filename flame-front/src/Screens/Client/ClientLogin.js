@@ -19,8 +19,8 @@ export default class ClientLogin extends Component {
 		this.api = new Api();
 	}
 	state = {
-		email: null,
-		password: null
+		email: "",
+		password: ""
 	};
 
 	componentDidMount() {
@@ -43,6 +43,11 @@ export default class ClientLogin extends Component {
 	};
 
 	clientLogin = () => {
+		if (!(this.state.email.length > 0 && this.state.password.length > 0)) {
+			alert("Reneignez tous les champs");
+			return;
+		}
+
 		let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		let isValidEmail = re.test(this.state.email.toLowerCase());
 		if (!isValidEmail) {
@@ -117,7 +122,7 @@ export default class ClientLogin extends Component {
 								onClick={this.clientLogin}
 							>
 								Submit
-						</Button>
+							</Button>
 
 							<Link
 								className=""
@@ -125,14 +130,12 @@ export default class ClientLogin extends Component {
 								to="/inscription"
 							>
 								Créer un compte
-						</Link>
+							</Link>
 						</div>
 					</Form>
-					
 				</Container>
 				<Footer />
 			</div>
-		
 		);
 	}
 }

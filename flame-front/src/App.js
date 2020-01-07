@@ -29,7 +29,7 @@ class App extends React.Component {
 			panier: null
 		};
 	}
-	// on definir all fonction dans localStorage
+	// localstorage et panier
 	componentWillMount() {
 		let client = localStorage.getItem("client");
 		let entreprise = localStorage.getItem("enterprise");

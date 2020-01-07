@@ -34,7 +34,16 @@ export default class ClientInscription extends Component {
 
 		this.api.registerClient(this.state).then(res => {
 			console.log(res.data);
-			this.setState({ loading: false, message: res.data.message });
+
+			this.setState({
+				loading: false,
+				message: res.data.message + ". Redirection dans 3 secondes."
+			});
+			if (res.data.success) {
+				setTimeout(() => {
+					window.location = "/ClientLogin";
+				}, 3000);
+			}
 		});
 	};
 
@@ -48,9 +57,7 @@ export default class ClientInscription extends Component {
 					padding: " 4rem"
 				}}
 			>
-				<h4 style={{ textAlign: "center" }}>
-					Inscrivez -vous
-				</h4>
+				<h4 style={{ textAlign: "center" }}>Inscrivez -vous</h4>
 
 				<Form style={{ backgroundColor: "" }}>
 					<FormGroup row>
@@ -149,11 +156,6 @@ export default class ClientInscription extends Component {
 					) : null}
 				</Form>
 			</div>
-
-
-
-
-			
 		);
 	}
 }
