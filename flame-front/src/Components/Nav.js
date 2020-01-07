@@ -114,7 +114,7 @@ export default class Nav extends Component {
 										isOpen={this.state.openDetails}
 										toggle={this.toggleDetails}
 									>
-										<DropdownToggle caret>{this.state.user.nom}</DropdownToggle>
+										<DropdownToggle caret>{this.state.user.email}</DropdownToggle>
 										<DropdownMenu>
 											<DropdownItem
 												onClick={() => (window.location = "/clientDashboard")}

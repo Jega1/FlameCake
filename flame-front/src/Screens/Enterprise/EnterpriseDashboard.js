@@ -182,9 +182,9 @@ export default class EnterpriseDashboard extends Component {
 		});
 		return (
 			<div>
-				<h2> Bienvenue sur votre espace </h2>
+				<h2 style={{textAlign:"center", margin:"2rem"}}> Bienvenue sur votre espace </h2>
 				{this.state.enterprise ? this.state.enterprise.nom : null}
-				<Button color="primary" onClick={this.toggleModal}>
+				<Button color="primary" onClick={this.toggleModal} style={{ textAlign: "center", margin: "2rem" }}>>
 					Ajouter
 				</Button>
 				<Container>
@@ -276,14 +276,14 @@ export default class EnterpriseDashboard extends Component {
 							</FormGroup>
 						</Form>
 					</ModalBody>
-					<ModalFooter>
+					<ModalFooter style={{display:"flex"}}>
 						<Button
 							color="primary"
 							onClick={this.publierAnnonce}
 							disabled={this.state.loading}
 						>
 							Ajouter
-						</Button>{" "}
+						</Button>
 						<Button color="secondary" onClick={this.toggleModal}>
 							Cancel
 						</Button>

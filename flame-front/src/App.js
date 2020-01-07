@@ -8,8 +8,6 @@ import "./static/css/login.css";
 import "./static/css/carousel.css";
 
 import Nav from "./Components/Nav";
-// import Navbar from "./Components/Nav-bar";
-// import Header from "./Components/Header";
 
 import Home from "./Screens/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -31,7 +29,7 @@ class App extends React.Component {
 			panier: null
 		};
 	}
-
+	// on definir all fonction dans localStorage
 	componentWillMount() {
 		let client = localStorage.getItem("client");
 		let entreprise = localStorage.getItem("enterprise");
@@ -46,6 +44,10 @@ class App extends React.Component {
 		this.setState({ panier: panier });
 	}
 
+	//pour afficher le panier dans le nav si le user est client panier affiche
+	// si le user entreprise panier n'affiche pas
+	//si user null panier null
+	//ce fonction displayNav applelé dans le path nav
 	displayNav = () => {
 		console.log(this.state);
 		if (this.state.client) {
@@ -59,6 +61,7 @@ class App extends React.Component {
 		}
 	};
 
+	///
 	reloadPanier = () => {
 		let panier = JSON.parse(localStorage.getItem("panier"));
 		this.setState({ panier: panier });
@@ -69,7 +72,6 @@ class App extends React.Component {
 			<Router>
 				<div>
 					{this.displayNav()}
-					{/* <Header/> */}
 
 					{/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

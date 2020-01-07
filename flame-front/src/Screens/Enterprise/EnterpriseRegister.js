@@ -15,7 +15,7 @@ import Api from "../../Services/Api";
 export default class EnterpriseRegister extends Component {
 	constructor(props) {
 		super(props);
-
+//pourquoi vide
 		this.state = { apiResponse: "" };
 
 		this.state = {
@@ -28,7 +28,7 @@ export default class EnterpriseRegister extends Component {
 			loading: false,
 			message: null
 		};
-		//pourquoi ici on intencie api
+	
 		this.api = new Api();
 	}
 
@@ -43,7 +43,7 @@ export default class EnterpriseRegister extends Component {
 		this.api.registerEnterprise(this.state).then(res => {
 			console.log(res.data);
 			this.setState({ loading: false, message: res.data.message });
-			// window.location = "/EnterpriseLogin";
+			
 		});
 	};
 
@@ -136,6 +136,7 @@ export default class EnterpriseRegister extends Component {
 						{this.state.message ? (
 							<Alert color="success">{this.state.message}</Alert>
 						) : null}
+						
 					</Form>
 				</Container>
 			</div>

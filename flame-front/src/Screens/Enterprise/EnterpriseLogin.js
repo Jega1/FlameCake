@@ -10,8 +10,8 @@ import {
 	Button,
 	Alert
 } from "reactstrap";
-import Nav from "../../Components/Nav";
-import NavBar from "../../Components/NavBar";
+import Carousel from "../../Components/Carousel";
+import Footer from "../../Components/Footer";
 import Api from "../../Services/Api";
 
 export default class EnterpriseLogin extends Component {
@@ -66,50 +66,71 @@ export default class EnterpriseLogin extends Component {
 	render() {
 		return (
 			<div>
+				<Carousel />
 				<Container
-				
 					style={{
-					backgroundColor: "whitesmoke",
-					width: "80%",
-					margin: "auto",
-					padding: " 4rem"
-				}}
-			>
-				<h2 style={{ textAlign: "center" }}>Sign In entreprise</h2>
-				<Form style={{ backgroundColor: "" }}>
-					<Col>
-						<FormGroup>
-							<Label>Email</Label>
-							<Input
-								type="email"
-								name="email"
-								value={this.state.email}
-								onChange={this.handleInputChange}
-								placeholder="myemail@email.com"
-							/>
-						</FormGroup>
-					</Col>
-					<Col>
-						<FormGroup>
-							<Label for="examplePassword">Password</Label>
-							<Input
-								type="password"
-								name="password"
-								value={this.state.password}
-								onChange={this.handleInputChange}
-								placeholder="********"
-							/>
-						</FormGroup>
-					</Col>
-					<Button onClick={this.enterpriseLogin} disabled={this.state.loading}>
-						Submit
-					</Button>
+						backgroundColor: "whitesmoke",
+						width: "80%",
+						margin: "auto",
+						padding: " 4rem"
+					}}
+				>
+					<h2 style={{ textAlign: "center" }}>Sign In entreprise</h2>
+					<Form
+						style={{
+							background: "whitesmoke",
+							width: "80%",
+							margin: "auto",
+							padding: "4rem"
+						}}
+					>
+						<Col>
+							<FormGroup>
+								<Label style={{ fontSize: "2rem" }}>Email</Label>
+								<Input
+									type="email"
+									name="email"
+									value={this.state.email}
+									onChange={this.handleInputChange}
+									placeholder="myemail@email.com"
+									style={{ fontSize: "2rem" }}
+								/>
+							</FormGroup>
+						</Col>
+						<Col>
+							<FormGroup>
+								<Label for="examplePassword" style={{ fontSize: "2rem" }}>
+									Password
+								</Label>
+								<Input
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleInputChange}
+									placeholder="********"
+									style={{ fontSize: "2rem" }}
+								/>
+							</FormGroup>
+						</Col>
+						<Button
+							color="primary"
+							style={{ padding: ".7rem 3rem", fontSize: "1.5rem" }}
+							onClick={this.enterpriseLogin}
+							disabled={this.state.loading}
+						>
+							Submit
+						</Button>
 
-					<Link className="" to="/registerEntreprise">
-						Créer un compte enterprise
-					</Link>
-				</Form>
-			</Container>
+						<Link
+							className=""
+							style={{ fontSize: "2rem", margin: "0 4rem" }}
+							to="/registerEntreprise"
+						>
+							Créer un compte 
+						</Link>
+					</Form>
+				</Container>
+				<Footer />
 			</div>
 		);
 	}

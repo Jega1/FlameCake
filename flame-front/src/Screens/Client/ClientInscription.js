@@ -79,7 +79,7 @@ export default class ClientInscription extends Component {
 						</Col>
 					</FormGroup>
 					<FormGroup row>
-						<Label sm={2}>Poste</Label>
+						<Label sm={2}>Adresse</Label>
 						<Col sm={8}>
 							<Input
 								onChange={this.handleInputChange}
