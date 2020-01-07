@@ -95,7 +95,7 @@ export default class Nav extends Component {
 							<li class="nav-item active">
 								<Link className="nav-link" to="/">
 									<i class="fas fa-home"></i>
-									Home
+									Homeqqq
 								</Link>
 							</li>
 							<li class="nav-item">

@@ -1,11 +1,11 @@
- import React, { Component } from "react";
+import React, { Component } from "react";
 
- export default class SearchBar extends Component {
+export default class SearchBar extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchText: "",
-			placeHolder: "search par ville"
+			placeHolder: "search par gateaux"
 		};
 	}
 
@@ -14,15 +14,9 @@
 		console.log("-----------------------------");
 		console.log("une saise");
 	}
-	// handleChange = event => {
-	// 	this.setState({ [event.target.searcheText]: event.target.value });
-	// 	console.log("-----------------------------");
-	// 	console.log("une saise");
-	// };
+
 	render() {
 		return (
-			
-
 			<div>
 				<input
 					onChange={this.handleChange.bind(this)}

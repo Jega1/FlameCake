@@ -48,8 +48,6 @@ var upload = multer({
 
 // router pour uploader une image
 router.post("/uploadFile", upload.single("myImage"), (req, res) => {
-
-
 	console.log(req.file);
 	cloudinary.uploader.upload(req.file.path, function(error, result) {
 		console.log(error);
@@ -178,6 +176,7 @@ router.post("/publierAnnonce", (req, res) => {
 	a.categorie = req.body.annonce.categorie;
 	a.prix = req.body.annonce.prix;
 	a.taille = req.body.annonce.taille;
+	a.quantite = req.body.annonce.quantite;
 	a.description = req.body.annonce.description;
 	a.enterprise = req.body.annonce.enterprise._id;
 	if (req.body.urlImage) {
@@ -207,6 +206,7 @@ router.post("/updateAnnonce", (req, res) => {
 			a.categorie = req.body.annonce.categorie;
 			a.prix = req.body.annonce.prix;
 			a.taille = req.body.annonce.taille;
+			a.quantite = req.body.annonce.quantite;
 			a.description = req.body.annonce.description;
 			if (req.body.urlImage) {
 				a.photo = req.body.urlImage;

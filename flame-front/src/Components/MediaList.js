@@ -3,7 +3,7 @@ import { Jumbotron, Button, Row, Col, Container } from "reactstrap";
 
 const MediaList = props => {
 	return (
-		<Container style={{ width: "90%", paddingTop: "5rem", margin: "auto" }}>
+		<Container style={{ width: "90%", paddingTop: "2rem", margin: "auto" }}>
 			<Row>
 				<Col sm="6" xs="12">
 					<Jumbotron>

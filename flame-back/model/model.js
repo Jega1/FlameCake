@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var connect = function(callback) {
 	mongoose.set("debug", true);
 	mongoose.connect(
-		"mongodb+srv://admin:admin@cluster0-vpicu.mongodb.net/smartjob?retryWrites=true&w=majority"
+		"mongodb+srv://admin:admin@cluster0-vpicu.mongodb.net/flameCake?retryWrites=true&w=majority"
 	);
 	var db = mongoose.connection;
 	db.on("error", console.error.bind(console, " Connection error"));

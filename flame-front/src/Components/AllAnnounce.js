@@ -45,7 +45,7 @@ export default class AllAnnounce extends Component {
 		let annonces = this.state.annonces.map((annonce, index) => {
 			return (
 				<Col md="4">
-					<Card key={index} style={{ height: "500px", marginTop: "20px" }}>
+					<Card key={index} style={{ height: "50vh", marginTop: "10rem" }}>
 						<CardImg
 							top
 							width="100%"
@@ -87,43 +87,3 @@ export default class AllAnnounce extends Component {
 	}
 }
 
-// 	render() {
-// 		let annonces = this.state.annonces.map((annonce, index) => {
-// 			return (
-// 				<div>
-// 					<Card>
-// 						<CardMedia
-// 							style={{ height: 0, paddingTop: "5%" }}
-// 							src={annonce.photo}
-// 							// title={this}
-// 						/>
-// 						<CardContent>
-// 							<Typography gutterBottom variant="headline" componant="h2">
-// 								{/* {this.props.} */}
-// 								{annonce.nom}
-// 							</Typography>
-// 							<Typography componant="p">
-// 								{/* {this.props.discription} */}
-// 								{annonce.description}
-// 							</Typography>
-// 						</CardContent>
-
-// 						<CardActions>
-// 							<Button size="small" color="primary" href="" target="_blank">
-// 								go to shop
-// 							</Button>
-// 						</CardActions>
-// 					</Card>
-// 				</div>
-// 			);
-// 		});
-// 		return (
-// 			<div>
-// 				<Container>
-// 					{/* <AnnonceDetaille /> */}
-// 					<Row>{annonces}</Row>
-// 				</Container>
-// 			</div>
-// 		);
-// 	}
-// }

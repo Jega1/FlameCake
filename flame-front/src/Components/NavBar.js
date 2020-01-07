@@ -82,7 +82,7 @@ export default class Nav extends Component {
 					<ul class="menu__list">
 						<li class="menu__list-item">
 							<Link className="menu__link menu__link--active" to="/">
-								Home
+								Homeqqqqqqqqqqqq
 							</Link>
 						</li>
 

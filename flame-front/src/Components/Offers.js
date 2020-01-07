@@ -6,15 +6,53 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { typography } from "@material-ui/system";
+import Api from "../../Services/Api";
 
 export default class Offers extends Component {
+
+	constructor(props) {
+		super(props);
+		this.api = new Api();
+		this.state = {
+			loading: false,
+			enterprise: {},
+			mesAnnonces: [],
+			
+		};
+	}
+
+	componentDidMount() {
+		let token = localStorage.getItem("tokenEnterprise");
+		let enterp = localStorage.getItem("enterprise");
+
+		if (!token || !enterp) {
+			window.location = "/EnterpriseLogin";
+			return;
+		}
+
+		this.setState({ enterprise: JSON.parse(enterp) }, () => {
+			this.getAnnonces();
+		});
+		console.log(this.state);
+	}
+
+	getAnnonces = () => {
+		this.api.getAnnonces(this.state.enterprise).then(res => {
+			console.log(res.data);
+			if (res.data.success) {
+				this.setState({ mesAnnonces: res.data.mesAnnonces });
+			}
+		});
+	};
+
 	render() {
+			let mesAnnonces = this.state.mesAnnonces.map((annonce, index) => {
 		return (
 			<div>
 				<Card>
 					<CardMedia
 						style={{ height: 0, paddingTop: "56.25%" }}
-						// image={this.}
+						image={annonce.photo}
 						// title={this}
 					/>
 					<CardContent>
@@ -32,6 +70,7 @@ export default class Offers extends Component {
 						</Button>
 					</CardActions>
 				</Card>
+				<div>{mesAnnonces}</div>
 			</div>
 		);
 	}

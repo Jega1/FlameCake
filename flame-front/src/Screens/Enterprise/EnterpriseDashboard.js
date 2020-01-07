@@ -99,12 +99,7 @@ export default class EnterpriseDashboard extends Component {
 		this.setState({ categorie: event.target.value });
 	};
 
-	// onFile = event => {
-	// 	//console.log(event.target.files[0]);
-	// 	this.setState({
-	// 		file: event.target.files[0]
-	// 	});
-	// };
+
 
 	toggleModal = () => this.setState({ modalOpen: !this.state.modalOpen });
 
@@ -130,7 +125,9 @@ export default class EnterpriseDashboard extends Component {
 			this.api.publierAnnonce(this.state, null).then(res => {
 				console.log(res.data);
 				this.setState({ loading: false, modalOpen: false });
+				
 			});
+			
 		}
 	};
 
@@ -165,10 +162,12 @@ export default class EnterpriseDashboard extends Component {
 							alt="Card image cap"
 						/>
 						<CardBody>
-							<CardTitle>{annonce.nom}</CardTitle>
-							<CardSubtitle>{annonce.categorie}</CardSubtitle>
-							<CardText>{annonce.prix}</CardText>
-							<CardText>{annonce.description}</CardText>
+							<CardTitle style={{fontSize:"1.5rem"}}>Nom de gateau{" : "}{annonce.nom}</CardTitle>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>Catégorie{" : "}{annonce.categorie}</CardSubtitle>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>Taille{" : "}{annonce.taille}</CardSubtitle>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>Quantité{" : "}{annonce.quantite}</CardSubtitle>
+							<CardText style={{ fontSize: "1.5rem" }}>Prix{" : "}{annonce.prix}</CardText>
+							<CardText style={{ fontSize: "1.5rem" }}>Déscription{" : "}{annonce.description}</CardText>
 							<ModifAnnonce {...annonce} getAnnonces={this.getAnnonces} />
 							<Button
 								color="danger"
