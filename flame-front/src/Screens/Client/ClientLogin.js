@@ -9,6 +9,8 @@ import {
 	Input,
 	Button
 } from "reactstrap";
+import Carousel from "../../Components/Carousel";
+import Footer from "../../Components/Footer";
 import Api from "../../Services/Api";
 
 export default class ClientLogin extends Component {
@@ -62,51 +64,75 @@ export default class ClientLogin extends Component {
 
 	render() {
 		return (
-			<Container
-				style={{
-					backgroundColor: "whitesmoke",
-					width: "80%",
-					margin: "auto",
-					padding: " 4rem"
-				}}
-			>
-				<h2 style={{ textAlign: "center" }}>Sign In</h2>
-				<Form className="form">
-					<Col>
-						<FormGroup>
-							<Label>Email</Label>
-							<Input
-								type="email"
-								name="email"
-								placeholder="myemail@email.com"
-								value={this.state.email}
-								onChange={this.handleInputChange}
-							/>
-						</FormGroup>
-					</Col>
-					<Col>
-						<FormGroup>
-							<Label for="examplePassword">Password</Label>
-							<Input
-								type="password"
-								name="password"
-								value={this.state.password}
-								onChange={this.handleInputChange}
-								placeholder="********"
-							/>
-						</FormGroup>
-					</Col>
-					<div>
-						<Button sm={{ size: 8, offset: 4 }} onClick={this.clientLogin}>
-							Submit
+			<div>
+				<Carousel />
+				<Container
+					style={{
+						backgroundColor: "",
+						width: "100%",
+						marginTop: "",
+						padding: ""
+					}}
+				>
+					<h2 style={{ textAlign: "center" }}>Sign In</h2>
+					<Form
+						style={{
+							background: "whitesmoke",
+							width: "80%",
+							margin: "auto",
+							padding: "4rem"
+						}}
+						className="form"
+					>
+						<Col>
+							<FormGroup>
+								<Label style={{ fontSize: "2rem" }}>Email</Label>
+								<Input
+									type="email"
+									name="email"
+									placeholder="myemail@email.com"
+									value={this.state.email}
+									onChange={this.handleInputChange}
+									style={{ fontSize: "2rem" }}
+								/>
+							</FormGroup>
+						</Col>
+						<Col>
+							<FormGroup>
+								<Label style={{ fontSize: "2rem" }}>Password</Label>
+								<Input
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleInputChange}
+									style={{ fontSize: "2rem" }}
+								/>
+							</FormGroup>
+						</Col>
+						<div>
+							<Button
+								width="50%"
+								color="primary"
+								style={{ padding: ".7rem 3rem", fontSize: "1.5rem" }}
+								onClick={this.clientLogin}
+							>
+								Submit
 						</Button>
 
-						<Link className="" to="/inscription">
-							Créer un compte
+							<Link
+								className=""
+								style={{ fontSize: "2rem", margin: "0 4rem" }}
+								to="/inscription"
+							>
+								Créer un compte
 						</Link>
-					</div>
-				</Form>
-			</Container>
+						</div>
+					</Form>
+					
+				</Container>
+				<Footer />
+			</div>
+		
 		);
 	}
 }

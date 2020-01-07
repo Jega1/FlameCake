@@ -18,7 +18,7 @@ var clientSchema = new Schema({
 	nom: String,
 	prenom: String,
 	ville: String,
-	poste: String,
+	adresse: String,
 	email: {
 		type: String,
 		required: true,

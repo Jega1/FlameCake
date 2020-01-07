@@ -3,6 +3,7 @@ import "./static/css/style.css";
 import "./static/css/footer.css";
 import "./static/css/nav.css";
 import "./static/css/produitDetaille.css";
+import "./static/css/login.css";
 
 import "./static/css/carousel.css";
 

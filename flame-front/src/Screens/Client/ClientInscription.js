@@ -12,7 +12,7 @@ export default class ClientInscription extends Component {
 		this.state = {
 			nom: null,
 			prenom: null,
-			poste: null,
+			adresse: null,
 			email: null,
 			password: null,
 			ville: null,
@@ -49,7 +49,7 @@ export default class ClientInscription extends Component {
 				}}
 			>
 				<h4 style={{ textAlign: "center" }}>
-					Trouvez tous les jobs qu'il vous faut en créant un compte !
+					Inscrivez -vous
 				</h4>
 
 				<Form style={{ backgroundColor: "" }}>
@@ -85,8 +85,8 @@ export default class ClientInscription extends Component {
 								onChange={this.handleInputChange}
 								type="text"
 								value={this.state.poste}
-								name="poste"
-								placeholder="Poste"
+								name="adresse"
+								placeholder="Adresse"
 							/>
 						</Col>
 					</FormGroup>
@@ -149,6 +149,11 @@ export default class ClientInscription extends Component {
 					) : null}
 				</Form>
 			</div>
+
+
+
+
+			
 		);
 	}
 }
