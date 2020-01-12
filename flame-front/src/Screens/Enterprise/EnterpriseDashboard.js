@@ -100,8 +100,6 @@ export default class EnterpriseDashboard extends Component {
 		this.setState({ categorie: event.target.value });
 	};
 
-
-
 	toggleModal = () => this.setState({ modalOpen: !this.state.modalOpen });
 
 	publierAnnonce = () => {
@@ -115,7 +113,7 @@ export default class EnterpriseDashboard extends Component {
 					let url = res.data.url;
 					// si tout c'est bien passé, on publie l'annonce et on passe l'URL de l'image à publierAnnonce
 					this.api.publierAnnonce(this.state, url).then(res => {
-						console.log(res.data);
+						this.getAnnonces();
 					});
 				} else {
 					alert("Erreur lors de l'upload de l'image");
@@ -126,9 +124,8 @@ export default class EnterpriseDashboard extends Component {
 			this.api.publierAnnonce(this.state, null).then(res => {
 				console.log(res.data);
 				this.setState({ loading: false, modalOpen: false });
-				
+				this.getAnnonces();
 			});
-			
 		}
 	};
 
@@ -156,21 +153,42 @@ export default class EnterpriseDashboard extends Component {
 			return (
 				<Col md="4">
 					<Card key={index}>
-						<CardImg
-							top
-							width="100%"
-							src={annonce.photo}
-							alt="Card image cap"
-						/>
-						<CardBody>
-							<CardTitle style={{fontSize:"1.5rem"}}>Nom de gateau{" : "}{annonce.nom}</CardTitle>
-							<CardSubtitle style={{ fontSize: "1.5rem" }}>Catégorie{" : "}{annonce.categorie}</CardSubtitle>
-							<CardSubtitle style={{ fontSize: "1.5rem" }}>Taille{" : "}{annonce.taille}</CardSubtitle>
-							<CardSubtitle style={{ fontSize: "1.5rem" }}>Quantité{" : "}{annonce.quantite}</CardSubtitle>
-							<CardText style={{ fontSize: "1.5rem" }}>Prix{" : "}{annonce.prix}</CardText>
-							<CardText style={{ fontSize: "1.5rem" }}>Déscription{" : "}{annonce.description}</CardText>
+						{annonce.photo ? (
+							<CardImg
+								top
+								width="100%"
+								src={annonce.photo}
+								alt="Card image cap"
+							/>
+						) : null}
 
-							<div style={{display:"flex", justifyContent:"space-around"}}>
+						<CardBody>
+							<CardTitle style={{ fontSize: "1.5rem" }}>
+								Nom de gateau{" : "}
+								{annonce.nom}
+							</CardTitle>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>
+								Catégorie{" : "}
+								{annonce.categorie}
+							</CardSubtitle>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>
+								Taille{" : "}
+								{annonce.taille}
+							</CardSubtitle>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>
+								Quantité{" : "}
+								{annonce.quantite}
+							</CardSubtitle>
+							<CardText style={{ fontSize: "1.5rem" }}>
+								Prix{" : "}
+								{annonce.prix}
+							</CardText>
+							<CardText style={{ fontSize: "1.5rem" }}>
+								Déscription{" : "}
+								{annonce.description}
+							</CardText>
+
+							<div style={{ display: "flex", justifyContent: "space-around" }}>
 								<ModifAnnonce {...annonce} getAnnonces={this.getAnnonces} />
 								<Button
 									color="danger"
@@ -178,10 +196,8 @@ export default class EnterpriseDashboard extends Component {
 									style={{ padding: "1rem 2rem" }}
 								>
 									Supprimer
-							</Button>
-
+								</Button>
 							</div>
-						
 						</CardBody>
 					</Card>
 				</Col>
@@ -189,11 +205,23 @@ export default class EnterpriseDashboard extends Component {
 		});
 		return (
 			<div>
-				<h2 style={{ textAlign: "center", margin: "2rem", paddingTop: "3rem" }}>	{this.state.enterprise ? this.state.enterprise.nom : null} Bienvenue sur votre espace
-				
-				<Button color="primary" onClick={this.toggleModal} style={{ textAlign: "center", margin: "3rem", padding:"1rem 3rem", fontSize:"1.5rem" }}>
-					Ajouter vos produits
-				</Button> </h2>
+				<h2 style={{ textAlign: "center", margin: "2rem", paddingTop: "3rem" }}>
+					{" "}
+					{this.state.enterprise ? this.state.enterprise.nom : null} Bienvenue
+					sur votre espace
+					<Button
+						color="primary"
+						onClick={this.toggleModal}
+						style={{
+							textAlign: "center",
+							margin: "3rem",
+							padding: "1rem 3rem",
+							fontSize: "1.5rem"
+						}}
+					>
+						Ajouter vos produits
+					</Button>{" "}
+				</h2>
 				<Container>
 					<Row>{mesAnnonces}</Row>
 				</Container>
@@ -254,7 +282,11 @@ export default class EnterpriseDashboard extends Component {
 							</FormGroup>
 							<FormGroup>
 								<Label>Taille</Label>
-								<Input type="select" name="taille">
+								<Input
+									type="select"
+									name="taille"
+									onChange={this.handleSelectTaille}
+								>
 									<option>Petite</option>
 									<option>Moyenne</option>
 									<option>Grande</option>
@@ -283,12 +315,11 @@ export default class EnterpriseDashboard extends Component {
 							</FormGroup>
 						</Form>
 					</ModalBody>
-					<ModalFooter style={{display:"flex"}}>
+					<ModalFooter style={{ display: "flex" }}>
 						<Button
 							color="primary"
 							onClick={this.publierAnnonce}
 							disabled={this.state.loading}
-							
 						>
 							Ajouter
 						</Button>
@@ -297,7 +328,7 @@ export default class EnterpriseDashboard extends Component {
 						</Button>
 					</ModalFooter>
 				</Modal>
-				<Footer/>
+				<Footer />
 			</div>
 		);
 	}
