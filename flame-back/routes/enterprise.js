@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Enterprise = require("../model/enterprise").Enterprise;
 var Annonce = require("../model/annonce").Annonce;
+var Commande = require("../model/commande").Commande;
 const secret = "3ywb*XEGEC7)";
 const jwt = require("jwt-simple");
 const { uuid } = require("uuidv4");
@@ -293,17 +294,28 @@ router.post("/checkTokenEnt", (req, res) => {
 });
 
 router.post("/getMesVentes", (req, res) => {
-	// Commande.find({ vender : req.body.vender._id }, (err, commandes) => {
-	// 	if (!err) {
-	// 		res.json({
-	// 			success: true,
-	// 			ventes: ventes
-	// 		});
-	// 	} else {
-	// 		res.json({
-	// 			success: false
-	// 		});
-	// 	}
-	// });
+	console.log(req.body);
+	Commande.find(
+		{ panier: { $elemMatch: { enterprise: req.body.entreprise._id } } },
+		(err, commandes) => {
+			let mesVentes = [];
+			commandes.forEach(commande => {
+				commande.panier.forEach(item => {
+					if (item.enterprise == req.body.entreprise._id) {
+						mesVentes.push(item);
+					}
+				});
+			});
+
+			res.json({
+				success: true,
+				mesVentes: mesVentes
+			});
+			if (!err) {
+			} else {
+				res.send(400);
+			}
+		}
+	);
 });
 module.exports = router;

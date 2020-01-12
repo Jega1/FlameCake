@@ -108,4 +108,10 @@ export default class Api {
 			client: client
 		});
 	}
+
+	getMesVentes(entreprise) {
+		return axios.post(this.url + "/enterprise/getMesVentes", {
+			entreprise: entreprise
+		});
+	}
 }
