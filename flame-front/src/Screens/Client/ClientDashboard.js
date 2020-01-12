@@ -73,7 +73,8 @@ export default class ClientDashboard extends Component {
 			p.push(annonce);
 			localStorage.setItem("panier", JSON.stringify(p));
 		}
-		window.location.reload();
+		//window.location.reload();
+		this.props.reloadPanier();
 	};
 
 	render() {

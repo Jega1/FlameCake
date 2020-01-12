@@ -3,6 +3,16 @@
 	display: none;
 	float: left;
 	width: 100% !important;
-	height: 70vh;
 	margin: auto;
+	font-size: 3rem;
 }
+
+.carousel-item {
+	position: relative;
+	display: none;
+	float: left;
+	width: 100% !important;
+	margin: auto;
+	font-size: 3rem;
+}
+

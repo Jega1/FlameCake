@@ -21,18 +21,24 @@ export default class EnterpriseLogin extends Component {
 	}
 
 	state = {
-		email: null,
-		password: null
+		email: "",
+		password: ""
 	};
 
 	componentDidMount() {
 		// on vérifie le token
 
 		let token = localStorage.getItem("tokenEnterprise");
+		let enterp = localStorage.getItem("enterprise");
 		if (token) {
 			// si le token existe dans le localstorage
 			// TODO vérifier avec la bdd
 			//window.location = "/EnterpriseDashboard";
+			this.api.checkTokenEnt(token).then(res => {
+				if (res.data.success) {
+					window.location = "/enterpriseDashboard";
+				}
+			});
 		}
 	}
 
@@ -41,6 +47,11 @@ export default class EnterpriseLogin extends Component {
 	};
 
 	enterpriseLogin = () => {
+		if (!(this.state.email.length > 0 && this.state.password.length > 0)) {
+			alert("Reneignez tous les champs");
+			return;
+		}
+
 		let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		let isValidEmail = re.test(this.state.email.toLowerCase());
 		if (!isValidEmail) {
@@ -126,7 +137,7 @@ export default class EnterpriseLogin extends Component {
 							style={{ fontSize: "2rem", margin: "0 4rem" }}
 							to="/registerEntreprise"
 						>
-							Créer un compte 
+							Créer un compte
 						</Link>
 					</Form>
 				</Container>

@@ -60,8 +60,10 @@ export default class MesCommandes extends Component {
 	render() {
 		let commandes = this.state.commandes.map((commande, index) => {
 			return (
-				<ListGroupItem key={index} color={index % 2 == 0 ? "warning" : "info"}>
-					<ListGroupItemHeading>Total: {commande.total} $</ListGroupItemHeading>
+				<div>
+					<ListGroupItem key={index} color={index % 2 == 0 ? "warning" : "info"}>
+						<ListGroupItemHeading>Total: {commande.total} $</ListGroupItemHeading>
+			
 					{commande.panier.map((p, i) => {
 						return (
 							<ListGroupItemText key={i}>
@@ -70,6 +72,7 @@ export default class MesCommandes extends Component {
 						);
 					})}
 				</ListGroupItem>
+				</div>
 			);
 		});
 		return <ListGroup flush>{commandes}</ListGroup>;

@@ -4,7 +4,6 @@ import "./static/css/footer.css";
 import "./static/css/nav.css";
 import "./static/css/produitDetaille.css";
 import "./static/css/login.css";
-
 import "./static/css/carousel.css";
 
 import Nav from "./Components/Nav";
@@ -20,13 +19,14 @@ import ClientDashboard from "./Screens/Client/ClientDashboard";
 import EnterpriseDashboard from "./Screens/Enterprise/EnterpriseDashboard";
 import AnnonceDetaille from "./Screens/Client/AnnonceDetaille";
 import MesCommandes from "./Screens/Client/MesCommandes";
+import MesVentes from "./Screens/Enterprise/MesVentes";
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			client: null,
-			entreprise: null,
-			panier: null
+			entreprise: null
 		};
 	}
 	// localstorage et panier
@@ -44,6 +44,10 @@ class App extends React.Component {
 		this.setState({ panier: panier });
 	}
 
+	reloadPanier = () => {
+		this.refs.nav.reloadPanier();
+	};
+
 	//pour afficher le panier dans le nav si le user est client panier affiche
 	// si le user entreprise panier n'affiche pas
 	//si user null panier null
@@ -51,20 +55,14 @@ class App extends React.Component {
 	displayNav = () => {
 		console.log(this.state);
 		if (this.state.client) {
-			return <Nav user={this.state.client} panier={this.state.panier} />;
+			return <Nav entreprise={null} user={this.state.client} ref="nav" />;
 		} else {
 			if (this.state.entreprise) {
-				return <Nav user={this.state.entreprise} panier={null} />;
+				return <Nav user={null} entreprise={this.state.entreprise} ref="nav" />;
 			} else {
-				return <Nav user={null} panier={null} />;
+				return <Nav entreprise={null} user={null} ref="nav" />;
 			}
 		}
-	};
-
-	///
-	reloadPanier = () => {
-		let panier = JSON.parse(localStorage.getItem("panier"));
-		this.setState({ panier: panier });
 	};
 
 	render() {
@@ -99,6 +97,9 @@ class App extends React.Component {
 						</Route>
 						<Route path="/mesCommandes">
 							<MesCommandes />
+						</Route>
+						<Route path="/mesVentes">
+							<MesVentes />
 						</Route>
 						<Route path="/ModifProduit"></Route>
 						<Route path="/annonce/:annonceId" component={AnnonceDetaille} />

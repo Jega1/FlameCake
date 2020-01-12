@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { AvForm, AvField } from "availity-reactstrap-validation";
+
 import {
 	Container,
 	Col,
@@ -75,62 +77,68 @@ export default class ClientLogin extends Component {
 					style={{
 						backgroundColor: "",
 						width: "100%",
-						marginTop: "",
-						padding: ""
+						height: "50vh",
+						margin: "auto",
+						padding: "4rem"
 					}}
 				>
 					<h2 style={{ textAlign: "center" }}>Sign In</h2>
 					<Form
-						style={{
-							background: "whitesmoke",
-							width: "80%",
-							margin: "auto",
-							padding: "4rem"
-						}}
 						className="form"
+						// style={{
+						// 	background: "whitesmoke",
+						// 	width: "100%",
+						// 	margin: "auto",
+						// 	padding: "1rem"
+						// }}
 					>
 						<Col>
 							<FormGroup>
-								<Label style={{ fontSize: "2rem" }}>Email</Label>
+								<Label style={{ fontSize: "1.5rem" }}>Email</Label>
 								<Input
 									type="email"
 									name="email"
 									placeholder="myemail@email.com"
 									value={this.state.email}
 									onChange={this.handleInputChange}
-									style={{ fontSize: "2rem" }}
+									style={{ fontSize: "1.5rem" }}
+									required
 								/>
 							</FormGroup>
 						</Col>
 						<Col>
 							<FormGroup>
-								<Label style={{ fontSize: "2rem" }}>Password</Label>
+								<Label style={{ fontSize: "1.5rem" }}>Password</Label>
 								<Input
 									type="password"
 									name="password"
 									value={this.state.password}
 									onChange={this.handleInputChange}
-									style={{ fontSize: "2rem" }}
+									style={{ fontSize: "1.5rem" }}
+									required
 								/>
 							</FormGroup>
 						</Col>
-						<div>
-							<Button
-								width="50%"
-								color="primary"
-								style={{ padding: ".7rem 3rem", fontSize: "1.5rem" }}
-								onClick={this.clientLogin}
-							>
-								Submit
-							</Button>
-
-							<Link
-								className=""
-								style={{ fontSize: "2rem", margin: "0 4rem" }}
-								to="/inscription"
-							>
-								Créer un compte
-							</Link>
+						<div style={{ display: "flex", justifyContent: "space-around" }}>
+							<div>
+								<Button
+									width="50%"
+									color="primary"
+									style={{ padding: ".7rem 3rem", fontSize: "1rem" }}
+									onClick={this.clientLogin}
+								>
+									Submit
+								</Button>
+							</div>
+							<div>
+								<Link
+									className=""
+									style={{ fontSize: "1.6rem" }}
+									to="/inscription"
+								>
+									Créer un compte
+								</Link>
+							</div>
 						</div>
 					</Form>
 				</Container>

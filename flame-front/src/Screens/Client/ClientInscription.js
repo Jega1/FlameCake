@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Form, FormGroup, Label, Input, Alert } from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
 import Button from "@material-ui/core/Button";
 
 import Api from "../../Services/Api";
@@ -60,7 +61,15 @@ export default class ClientInscription extends Component {
 				<h4 style={{ textAlign: "center" }}>Inscrivez -vous</h4>
 
 				<Form style={{ backgroundColor: "" }}>
-					<FormGroup row>
+					<FormGroup
+						row
+						style={{
+							background: "red",
+							width: "80%",
+							margin: "auto",
+							padding: "4rem"
+						}}
+					>
 						<Label sm={2}>Nom</Label>
 						<Col sm={8}>
 							<Input
@@ -69,6 +78,7 @@ export default class ClientInscription extends Component {
 								value={this.state.nom}
 								name="nom"
 								placeholder="Nom"
+								required
 							/>
 						</Col>
 					</FormGroup>
@@ -82,6 +92,7 @@ export default class ClientInscription extends Component {
 								value={this.state.prenom}
 								name="prenom"
 								placeholder="Prenom"
+								required
 							/>
 						</Col>
 					</FormGroup>
@@ -107,6 +118,7 @@ export default class ClientInscription extends Component {
 								value={this.state.ville}
 								name="ville"
 								placeholder="Ville"
+								required
 							/>
 						</Col>
 					</FormGroup>
@@ -120,6 +132,7 @@ export default class ClientInscription extends Component {
 								value={this.state.email}
 								name="email"
 								placeholder="Email"
+								required
 							/>
 						</Col>
 					</FormGroup>
@@ -133,6 +146,7 @@ export default class ClientInscription extends Component {
 								value={this.state.password}
 								name="password"
 								placeholder="Mot de passe"
+								required
 							/>
 						</Col>
 					</FormGroup>

@@ -74,8 +74,8 @@ router.post("/uploadFile", upload.single("myImage"), (req, res) => {
 function checkUser(email, password) {
 	return new Promise((resolve, reject) => {
 		email = email.toLowerCase(); // tout le mail on convertit en minuscule
-		// on cherche un candidat avec le mail donné
-		// findOne c'est ppiur chercher UN UNIQUE candidat avec ce mail dans la bdd
+		// on cherche un entreprise avec le mail donné
+		// findOne c'est pour chercher UN UNIQUE entreprise avec ce mail dans la bdd
 		Enterprise.findOne({ email: email }, (err, enterprise) => {
 			if (err) {
 				return reject(err, null);
@@ -122,7 +122,7 @@ router.post("/registerEnterprise", (req, res, next) => {
 			console.log(err);
 			res.json({
 				success: false, // on renvoie un objet json au front pour dire que il y a un pb
-				message: "Impossible de crééer un compte avec les infos fournies."
+				message: "Impossible de créer un compte avec les infos fournies."
 			});
 		}
 	});
@@ -257,4 +257,53 @@ router.delete("/deleteAnnonce/:id", (req, res) => {
 	});
 });
 
+//verification token avec entreprise
+router.post("/checkTokenEnt", (req, res) => {
+	if (req.body.token) {
+		// ici on prend le token envoyé par le front, et on le décode avec le secret pour obtenir un id (qui correspon à l'id du user)
+		try {
+			let id = jwt.decode(req.body.token, secret);
+			console.log("//////////////////////////", id);
+			Enterprise.findById(id, (err, enterp) => {
+				// on cherche un user avec cet id pour voir s'il existe dans la base de données
+				if (enterp) {
+					enterp.password = null;
+					enterp.salt = null;
+					res.json({
+						success: true,
+						enterp: enterp
+					});
+				} else {
+					// si le user n'existe pas dans la base de données, alors on envoie un false
+					res.json({
+						success: false
+					});
+				}
+			});
+		} catch {
+			res.json({
+				success: false
+			});
+		}
+	} else {
+		res.json({
+			success: false
+		});
+	}
+});
+
+router.post("/getMesVentes", (req, res) => {
+	// Commande.find({ vender : req.body.vender._id }, (err, commandes) => {
+	// 	if (!err) {
+	// 		res.json({
+	// 			success: true,
+	// 			ventes: ventes
+	// 		});
+	// 	} else {
+	// 		res.json({
+	// 			success: false
+	// 		});
+	// 	}
+	// });
+});
 module.exports = router;

@@ -24,6 +24,7 @@ import {
 	Col
 } from "reactstrap";
 import ModifAnnonce from "../../Components/ModifAnnonce";
+import Footer from "../../Components/Footer";
 import Api from "../../Services/Api";
 
 export default class EnterpriseDashboard extends Component {
@@ -168,13 +169,19 @@ export default class EnterpriseDashboard extends Component {
 							<CardSubtitle style={{ fontSize: "1.5rem" }}>Quantité{" : "}{annonce.quantite}</CardSubtitle>
 							<CardText style={{ fontSize: "1.5rem" }}>Prix{" : "}{annonce.prix}</CardText>
 							<CardText style={{ fontSize: "1.5rem" }}>Déscription{" : "}{annonce.description}</CardText>
-							<ModifAnnonce {...annonce} getAnnonces={this.getAnnonces} />
-							<Button
-								color="danger"
-								onClick={() => this.deleteAnnonce(annonce._id)}
-							>
-								Supprimer
+
+							<div style={{display:"flex", justifyContent:"space-around"}}>
+								<ModifAnnonce {...annonce} getAnnonces={this.getAnnonces} />
+								<Button
+									color="danger"
+									onClick={() => this.deleteAnnonce(annonce._id)}
+									style={{ padding: "1rem 2rem" }}
+								>
+									Supprimer
 							</Button>
+
+							</div>
+						
 						</CardBody>
 					</Card>
 				</Col>
@@ -182,18 +189,18 @@ export default class EnterpriseDashboard extends Component {
 		});
 		return (
 			<div>
-				<h2 style={{textAlign:"center", margin:"2rem"}}> Bienvenue sur votre espace </h2>
-				{this.state.enterprise ? this.state.enterprise.nom : null}
-				<Button color="primary" onClick={this.toggleModal} style={{ textAlign: "center", margin: "2rem" }}>>
-					Ajouter
-				</Button>
+				<h2 style={{ textAlign: "center", margin: "2rem", paddingTop: "3rem" }}>	{this.state.enterprise ? this.state.enterprise.nom : null} Bienvenue sur votre espace
+				
+				<Button color="primary" onClick={this.toggleModal} style={{ textAlign: "center", margin: "3rem", padding:"1rem 3rem", fontSize:"1.5rem" }}>
+					Ajouter vos produits
+				</Button> </h2>
 				<Container>
 					<Row>{mesAnnonces}</Row>
 				</Container>
 				{/* start modal form to publier le announce*/}
 				<Modal isOpen={this.state.modalOpen} toggle={this.toggleModal}>
 					<ModalHeader toggle={this.toggleModal}>
-						Ajouter le produits
+						Ajouter le produit
 					</ModalHeader>
 					<ModalBody>
 						<Form>
@@ -281,6 +288,7 @@ export default class EnterpriseDashboard extends Component {
 							color="primary"
 							onClick={this.publierAnnonce}
 							disabled={this.state.loading}
+							
 						>
 							Ajouter
 						</Button>
@@ -289,6 +297,7 @@ export default class EnterpriseDashboard extends Component {
 						</Button>
 					</ModalFooter>
 				</Modal>
+				<Footer/>
 			</div>
 		);
 	}

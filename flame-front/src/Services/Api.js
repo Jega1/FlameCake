@@ -31,6 +31,13 @@ export default class Api {
 			password: password
 		});
 	}
+
+	checkToken(token) {
+		return axios.post(this.url + "/entreprise/checkToken", {
+			token: token
+		});
+	}
+
 	publierAnnonce(annonce, urlImage) {
 		return axios.post(this.url + "/enterprise/publierAnnonce", {
 			annonce: annonce,
@@ -86,6 +93,12 @@ export default class Api {
 	}
 	checkToken(token) {
 		return axios.post(this.url + "/client/checkToken", {
+			token: token
+		});
+	}
+
+	checkTokenEnt(token) {
+		return axios.post(this.url + "/enterprise/checkTokenEnt", {
 			token: token
 		});
 	}

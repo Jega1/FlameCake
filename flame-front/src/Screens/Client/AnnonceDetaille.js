@@ -74,7 +74,7 @@ export default class AnnonceDetaille extends Component {
 						</Button>
 						<Button
 							color="primary"
-							onClick={() =>window.location="/clientDashboard"}
+							onClick={() => (window.location = "/clientDashboard")}
 						>
 							Retour
 						</Button>

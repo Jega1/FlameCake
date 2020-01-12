@@ -1,17 +1,10 @@
 import React, { Component } from "react";
+import Logo from "../Components/Logo";
 
 export default class Footer extends Component {
 	render() {
 		return (
 			<div>
-				{/* <footer className="footer">
-					<div className="container">
-						<div className="row">
-							<div className="col-md-4">Test</div>
-						</div>
-					</div>
-				</footer> */}
-		
 				<footer>
 					<div className='reseau'>
 
@@ -26,16 +19,12 @@ export default class Footer extends Component {
 						</div>
 
 						<div className="footerSecond fooboo" >
-							<h3>USEFUL LINKS</h3>
-							<p>Lorem ipsum dolor sit amet.</p>
-							<p>Lorem ipsum dolor sit amet.</p>
-							<p>Lorem ipsum dolor sit amet.</p>
-							<p>Lorem ipsum dolor sit amet.</p>
+								<Logo/>
 						</div>
 
 						<div className="footerThird fooboo">
 							<h3>CONTACT</h3>
-							<p><i class="fas fa-home">09 75 75 12 39</i>.</p>
+							<p>09 75 75 12 39</p>
 							<p>Lorem ipsum dolor sit amet.</p>
 							<p>Lorem ipsum dolor sit amet.</p>
 							<p>Lorem ipsum dolor sit amet.</p>

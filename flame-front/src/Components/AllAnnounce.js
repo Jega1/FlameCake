@@ -45,7 +45,7 @@ export default class AllAnnounce extends Component {
 		let annonces = this.state.annonces.map((annonce, index) => {
 			return (
 				<Col md="4">
-					<Card key={index} style={{ height: "50vh", marginTop: "10rem" }}>
+					<Card key={index} style={{ minHeight: "50vh", marginTop: "10rem" }}>
 						<CardImg
 							top
 							width="100%"

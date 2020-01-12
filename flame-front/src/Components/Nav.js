@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import {
 	Dropdown,
 	DropdownToggle,
@@ -17,8 +18,9 @@ import {
 	Row,
 	Col
 } from "reactstrap";
-
+import Logo from "../Components/Logo";
 import Api from "../Services/Api";
+import Panier from "../Components/Panier";
 
 export default class Nav extends Component {
 	constructor(props) {
@@ -29,12 +31,9 @@ export default class Nav extends Component {
 			openDetails: false,
 			openPanier: false,
 			user: this.props.user,
-			panier: this.props.panier
+			entreprise: this.props.entreprise
 		};
 		console.log(this.state);
-	}
-	componentWillMount() {
-		console.log("NAV rendered");
 	}
 
 	toggle = () => {
@@ -45,34 +44,24 @@ export default class Nav extends Component {
 		this.setState({ openDetails: !this.state.openDetails });
 	};
 
-	togglePanier = () => {
-		this.setState({
-			openPanier: !this.state.openPanier
-		});
-	};
-
-	commander = () => {
-		this.api.commander(this.state.panier, this.state.user).then(res => {
-			if (res.data.success) {
-				localStorage.removeItem("panier");
-				alert("Votre commande a bien été prise en compte :)");
-				window.location.reload();
-			}
-		});
-	};
-
 	logout = () => {
 		localStorage.clear();
 		window.location = "/";
 	};
 
+	reloadPanier = () => {
+		this.refs.panier.reloadPanier();
+	}
+
 	render() {
 		return (
 			<div className="menu-div">
-				<nav id="menu" className="navbar navbar-expand-lg navbar-dark ">
+				<nav
+					id="menu"
+					className="navbar navbar-expand-lg navbar-dark fixed-top "
+				>
 					<Link to="/" className="navbar-brand">
-						<i class="fas fa-home">LOGO</i>
-						<img src="" />
+						<Logo height="70px" />
 					</Link>
 					<button
 						class="navbar-toggler"
@@ -94,38 +83,66 @@ export default class Nav extends Component {
 						>
 							<li class="nav-item active">
 								<Link className="nav-link" to="/">
-									<i class="fas fa-home"></i>
-									Homeqqq
+									Home
 								</Link>
 							</li>
 							<li class="nav-item">
 								<Link className="nav-link" to="/about">
-									About us
+									Entreprise
 								</Link>
 							</li>{" "}
 							<li class="nav-item">
-								<Link className="nav-link" to="/about">
+								<Link className="nav-link" to="/contact">
 									contact
 								</Link>
 							</li>{" "}
+							{/* pour ????? */}
 							<li class="nav-item">
-								{this.state.user ? (
+								{this.state.user || this.state.entreprise ? (
 									<Dropdown
 										isOpen={this.state.openDetails}
 										toggle={this.toggleDetails}
 									>
-										<DropdownToggle caret>{this.state.user.email}</DropdownToggle>
-										<DropdownMenu>
-											<DropdownItem
-												onClick={() => (window.location = "/clientDashboard")}
-											>
-												Mon compte
-											</DropdownItem>
-											<DropdownItem
-												onClick={()=>(window.location = "/mesCommandes")}
-											>
-												Mes commandes
-											</DropdownItem>
+										<DropdownToggle caret>
+											{this.state.user && this.state.user.email}
+											{this.state.entreprise && this.state.entreprise.email}
+										</DropdownToggle>
+
+										{/* pour redireger vers mes commande ou mes ventes */}
+										<DropdownMenu right>
+											{this.state.user ? (
+												<DropdownItem
+													onClick={() => (window.location = "/mesCommandes")}
+												>
+													Mes commandes
+												</DropdownItem>
+											) : (
+												<DropdownItem
+													onClick={() => (window.location = "/mesVentes")}
+												>
+													Mes ventes
+												</DropdownItem>
+											)}
+
+											{/* pour redireger vers clientDashboard ou entrepriseDashboard */}
+											{this.state.user ? (
+												<DropdownItem
+													onClick={() => (window.location = "/clientDashboard")}
+												>
+													Mon compte
+												</DropdownItem>
+											) : (
+												<DropdownItem
+													onClick={() =>
+														(window.location = "/enterpriseDashboard")
+													}
+												>
+													Mon compte
+												</DropdownItem>
+											)}
+
+											{/* pour le connexion ou deconnection clientDashboard ou entrepriseDashboard */}
+
 											<DropdownItem onClick={this.logout}>
 												Se déconnecter
 											</DropdownItem>
@@ -134,7 +151,7 @@ export default class Nav extends Component {
 								) : (
 									<Dropdown isOpen={this.state.open} toggle={this.toggle}>
 										<DropdownToggle caret>Connexion</DropdownToggle>
-										<DropdownMenu>
+										<DropdownMenu right>
 											<Link to="/ClientLogin">
 												<DropdownItem>Client</DropdownItem>
 											</Link>
@@ -146,49 +163,8 @@ export default class Nav extends Component {
 									</Dropdown>
 								)}
 							</li>
-							{this.state.user && this.state.panier ? (
-								<span>
-									<Button color="success" outline onClick={this.togglePanier}>
-										Panier{" "}
-										<Badge color="secondary">{this.state.panier.length}</Badge>
-									</Button>
-									<Modal
-										isOpen={this.state.openPanier}
-										toggle={this.togglePanier}
-									>
-										<ModalHeader toggle={this.togglePanier}>
-											Mon panier
-										</ModalHeader>
-										<ModalBody>
-											<ListGroup>
-												{this.state.panier.map((article, index) => {
-													return (
-														<ListGroupItem className="justify-content-between">
-															{article.nom} <Badge pill>{article.prix} $</Badge>
-														</ListGroupItem>
-													);
-												})}
-											</ListGroup>
-										</ModalBody>
-										<ModalFooter>
-											<h1>
-												Total:
-												{this.state.panier.reduce(
-													(acc, current) => acc + current.prix,
-													0
-												)}{" "}
-												$
-											</h1>
-											<Button color="primary" onClick={this.commander}>
-												Commander
-											</Button>{" "}
-											<Button color="secondary" onClick={this.togglePanier}>
-												Annuler
-											</Button>
-										</ModalFooter>
-									</Modal>
-								</span>
-							) : null}
+							{/* Start panier button and badge */}
+							{this.state.user && <Panier ref="panier" />}
 						</ul>
 					</div>
 				</nav>

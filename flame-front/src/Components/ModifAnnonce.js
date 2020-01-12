@@ -27,6 +27,7 @@ import Api from "../Services/Api";
 export default class Nav extends Component {
 	constructor(props) {
 		super(props);
+
 		this.api = new Api();
 		this.state = {
 			...this.props,
@@ -60,6 +61,7 @@ export default class Nav extends Component {
 		} else {
 			this.api.updateAnnonce(this.state, null).then(res => {
 				console.log(res.data);
+				this.props.getAnnonces();
 			});
 		}
 	};
@@ -90,7 +92,11 @@ export default class Nav extends Component {
 	render() {
 		return (
 			<div>
-				<Button color="primary" onClick={this.toggleModalModif}>
+				<Button
+					color="primary"
+					onClick={this.toggleModalModif}
+					style={{ padding: "1rem 2rem" }}
+				>
 					Modifier
 				</Button>
 				{/* start modal modifier les annonce*/}

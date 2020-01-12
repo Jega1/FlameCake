@@ -52,7 +52,7 @@ router.post("/registerClient", (req, res, next) => {
 			console.log(err);
 			res.json({
 				success: false, // on renvoie un objet json au front pour dire que il y a un pb
-				message: "Impossible de crééer un compte avec les infos fournies."
+				message: "Impossible de créer un compte avec les infos fournies."
 			});
 		}
 	});
