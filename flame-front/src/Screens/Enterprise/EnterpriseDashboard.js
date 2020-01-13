@@ -151,8 +151,14 @@ export default class EnterpriseDashboard extends Component {
 	render() {
 		let mesAnnonces = this.state.mesAnnonces.map((annonce, index) => {
 			return (
+				<Row style={{ textAlign: "center", width: "80%", paddingTop: "10rem", margin: "auto" }}>
 				<Col md="4">
-					<Card key={index}>
+					<Card key={index}
+						style={{
+							backgrounColor: "whitesmoke",
+							boxShadow: "0px 20px 25px rgba(0, 0, 0, 0.42)"
+
+						}}>
 						{annonce.photo ? (
 							<CardImg
 								top
@@ -201,6 +207,7 @@ export default class EnterpriseDashboard extends Component {
 						</CardBody>
 					</Card>
 				</Col>
+				</Row>
 			);
 		});
 		return (

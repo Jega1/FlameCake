@@ -230,9 +230,7 @@ router.post("/updateAnnonce", (req, res) => {
 });
 
 router.post("/getAnnonces", (req, res) => {
-	// console.log("///////////////////////");
-	// console.log(req.body.annonces);
-	// console.log("///////////////////");
+
 	Annonce.find({ enterprise: req.body.enterprise._id }, (err, annonces) => {
 		if (err) {
 			res.send(401);

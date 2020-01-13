@@ -80,8 +80,14 @@ export default class ClientDashboard extends Component {
 	render() {
 		let annonces = this.state.annonces.map((annonce, index) => {
 			return (
-				<Col md="4">
-					<Card key={index}>
+				<Col md="4" style={{ textAlign: "center", width: "100%", paddingTop: "10rem", margin: "auto" }}>
+					<Card key={index}
+						style={{
+							backgrounColor: "whitesmoke",
+							boxShadow: "0px 20px 25px rgba(0, 0, 0, 0.42)"
+
+						}}
+					>
 						<CardImg
 							top
 							width="100%"

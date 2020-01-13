@@ -53,33 +53,50 @@ export default class AnnonceDetaille extends Component {
 	render() {
 		if (this.state.annonce) {
 			return (
-				<Card style={{ height: "500px", marginTop: "20px", width: "500px" }}>
-					<CardImg
-						top
-						width="100%"
-						src={this.state.annonce.photo}
-						alt="Card image cap"
-					/>
-					<CardBody>
-						<CardTitle>{this.state.annonce.nom}</CardTitle>
-						<CardSubtitle>{this.state.annonce.prix}$</CardSubtitle>
-					</CardBody>
-					<CardBody>
-						<CardText>{this.state.annonce.description}</CardText>
-						<Button
-							color="primary"
-							onClick={() => this.ajouterAuPanier(this.state.annonce)}
+				<Row style={{ textAlign: "center", width: "80%", paddingTop: "10rem", margin:"auto" }}>
+					<Col md="4" >
+						<Card
+							style={{
+							backgrounColor: "whitesmoke",
+							boxShadow: "0px 20px 25px rgba(0, 0, 0, 0.42)"
+				
+							}}
 						>
-							Ajouter au panier
-						</Button>
-						<Button
-							color="primary"
-							onClick={() => (window.location = "/clientDashboard")}
-						>
-							Retour
-						</Button>
-					</CardBody>
-				</Card>
+							<CardImg
+								top
+								width="100%"
+								src={this.state.annonce.photo}
+								alt="Card image cap"
+							/>
+							<CardBody style={{ borderWidth: "0.5", borderColor: "red" }}>
+								<CardTitle style={{ fontSize: "1.5rem", background: "pink" }}>
+									Nom de gateau : {this.state.annonce.nom}
+								</CardTitle>
+								<CardSubtitle>{this.state.annonce.prix}$</CardSubtitle>
+							</CardBody>
+							<CardText>{this.state.annonce.description}</CardText>
+							<CardBody style={{ display: "flex", justifyContent: "space-around" }}>
+								
+							
+									<Button
+										color="primary"
+										onClick={() => this.ajouterAuPanier(this.state.annonce)}
+									>
+										Ajouter au panier
+								</Button>
+									<Button
+										color="primary"
+										onClick={() => (window.location = "/clientDashboard")}
+									>
+										Retour
+								</Button>
+									
+					
+							
+							</CardBody>
+						</Card>
+					</Col>
+				</Row>
 			);
 		} else {
 			return <div>Annonce non trouvée</div>;
