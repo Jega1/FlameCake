@@ -88,7 +88,7 @@ export default class Panier extends Component {
 				>
 					<ModalHeader
 						toggle={this.togglePanier}
-						style={{ width: "100%", background: "green" }}
+						style={{ width: "100%", backgroundColor: "#f59432" }}
 					>
 						Mon panier
 					</ModalHeader>
@@ -97,10 +97,10 @@ export default class Panier extends Component {
 							{this.state.panier.map((article, index) => {
 								return (
 									<ListGroupItem
-										className="justify-content-space-between"
+									
 										style={{ fontSize: "1.5rem", width: "100%" }}
 									>
-										{article.nom} <Badge pill>{article.prix} $</Badge>
+										{article.nom}<Badge pill style={{ backgroundColor: "#f59432" }}>{article.prix} $</Badge>
 										<Button
 											color="danger"
 											onClick={() => this.deleteItemPanier(index)}

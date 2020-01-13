@@ -80,7 +80,8 @@ export default class ClientDashboard extends Component {
 	render() {
 		let annonces = this.state.annonces.map((annonce, index) => {
 			return (
-				<Col md="4" style={{ textAlign: "center", width: "100%", paddingTop: "10rem", margin: "auto" }}>
+				
+				<Col md="4" style={{  width: "100%", paddingTop: "10rem", margin: "auto" }}>
 					<Card key={index}
 						style={{
 							backgrounColor: "whitesmoke",
@@ -115,14 +116,14 @@ export default class ClientDashboard extends Component {
 						</CardBody>
 					</Card>
 				</Col>
+				
 			);
 		});
 
 		return (
 			<div>
-				<Container>
-					{/* <AnnonceDetaille /> */}
-					<Row>{annonces}</Row>
+				<Container >
+						<Row>{annonces}</Row>
 				</Container>
 			</div>
 		);

@@ -96,7 +96,7 @@ export default class Nav extends Component {
 									contact
 								</Link>
 							</li>{" "}
-							{/* pour ????? */}
+							
 							<li class="nav-item">
 								{this.state.user || this.state.entreprise ? (
 									<Dropdown

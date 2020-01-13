@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Footer from "../../Components/Footer";
 import Api from "../../Services/Api";
 
 import {
@@ -62,19 +62,23 @@ export default class MesCommandes extends Component {
 			return (
 				<div>
 					<ListGroupItem key={index} color={index % 2 == 0 ? "warning" : "info"}>
-						<ListGroupItemHeading>Total: {commande.total} $</ListGroupItemHeading>
+						<ListGroupItemHeading>Total: {commande.total} €</ListGroupItemHeading>
 			
 					{commande.panier.map((p, i) => {
 						return (
 							<ListGroupItemText key={i}>
-								{p.nom} - {p.prix}$
+								{p.nom} - {p.prix}€
 							</ListGroupItemText>
 						);
 					})}
 				</ListGroupItem>
+		
 				</div>
 			);
 		});
-		return <ListGroup flush>{commandes}</ListGroup>;
+		return <div>
+			<ListGroup flush>{commandes}</ListGroup>
+	
+			</div>
 	}
 }

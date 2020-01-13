@@ -9,7 +9,7 @@ import {
 	Alert,
 	Container
 } from "reactstrap";
-import Nav from "../../Components/Nav";
+import Footer from "../../Components/Footer";
 import Api from "../../Services/Api";
 
 export default class EnterpriseRegister extends Component {
@@ -146,6 +146,7 @@ export default class EnterpriseRegister extends Component {
 						) : null}
 					</Form>
 				</Container>
+				<Footer/>
 			</div>
 		);
 	}
