@@ -151,25 +151,26 @@ export default class EnterpriseDashboard extends Component {
 	render() {
 		let mesAnnonces = this.state.mesAnnonces.map((annonce, index) => {
 			return (
-				<Row style={{ textAlign: "center", width: "80%", paddingTop: "10rem", margin: "auto" }}>
-				<Col md="4">
-					<Card key={index}
+				<Col md="4" style={{ paddingTop: "5rem" }}>
+					<Card
+						key={index}
 						style={{
 							backgrounColor: "whitesmoke",
 							boxShadow: "0px 20px 25px rgba(0, 0, 0, 0.42)"
-
-						}}>
+						}}
+					>
 						{annonce.photo ? (
 							<CardImg
 								top
 								width="100%"
+								height="300px"
 								src={annonce.photo}
 								alt="Card image cap"
 							/>
 						) : null}
 
-						<CardBody>
-							<CardTitle style={{ fontSize: "1.5rem" }}>
+						<CardBody style={{  }}>
+							<CardTitle style={{ fontSize: "1.5rem", color: "#f59432"}}>
 								Nom de gateau{" : "}
 								{annonce.nom}
 							</CardTitle>
@@ -185,7 +186,7 @@ export default class EnterpriseDashboard extends Component {
 								Quantité{" : "}
 								{annonce.quantite}
 							</CardSubtitle>
-							<CardText style={{ fontSize: "1.5rem" }}>
+							<CardText style={{ fontSize: "1.5rem", color: "green" }}>
 								Prix{" : "}
 								{annonce.prix}
 							</CardText>
@@ -207,7 +208,6 @@ export default class EnterpriseDashboard extends Component {
 						</CardBody>
 					</Card>
 				</Col>
-				</Row>
 			);
 		});
 		return (
@@ -316,8 +316,6 @@ export default class EnterpriseDashboard extends Component {
 									type="file"
 									name="file"
 									onChange={this.handleImageChange}
-									//onChange={this.onFile}
-									// value={this.state.file}
 								/>
 							</FormGroup>
 						</Form>

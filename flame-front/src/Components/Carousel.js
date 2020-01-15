@@ -1,20 +1,19 @@
 import React from "react";
 import { UncontrolledCarousel } from "reactstrap";
-import image1 from "../static/images/img1.jpg";
-import image2 from "../static/images/img2.jpg";
-import image3 from "../static/images/img3.jpg";
-
+import img1 from "../static/images/img29.jpg";
+import image2 from "../static/images/img27.jpg";
+import image3 from "../static/images/img28.jpg";
 
 const items = [
 	{
-		src: image1,
+		src: img1,
 		altText: "Slide 1",
 		caption: "Slide 1",
 		header: "Slide 1 Header",
 		key: "1"
 	},
 	{
-		src:image2,
+		src: image2,
 		altText: "Slide 2",
 		caption: "Slide 2",
 		header: "Slide 2 Header",

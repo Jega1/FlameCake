@@ -51,10 +51,6 @@ export default class ClientDashboard extends Component {
 		}
 	}
 
-	// monCompte = () => {
-	// 	window.location = "/ClientDashboard";
-	// };
-
 	logout = () => {
 		localStorage.clear();
 		window.location = "/";
@@ -80,27 +76,37 @@ export default class ClientDashboard extends Component {
 	render() {
 		let annonces = this.state.annonces.map((annonce, index) => {
 			return (
-				
-				<Col md="4" style={{  width: "100%", paddingTop: "10rem", margin: "auto" }}>
-					<Card key={index}
+				<Col
+					md="4"
+					style={{ width: "100%", minHeight: "50vh", marginTop: "10rem" }}
+				>
+					<Card
+						key={index}
 						style={{
 							backgrounColor: "whitesmoke",
 							boxShadow: "0px 20px 25px rgba(0, 0, 0, 0.42)"
-
 						}}
 					>
 						<CardImg
 							top
 							width="100%"
+							height="300px"
 							src={annonce.photo}
 							alt="Card image cap"
 						/>
 						<CardBody>
-							<CardTitle>{annonce.nom}</CardTitle>
-							<CardSubtitle>{annonce.prix}$</CardSubtitle>
+							<CardTitle style={{ fontSize: "1.5rem", color: "#f59432" }}>
+								Nom : {annonce.nom}
+							</CardTitle>
+							<CardSubtitle style={{ fontSize: "1.5rem", color: "green" }}>
+								Prix :{annonce.prix}€
+							</CardSubtitle>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>
+								Taille : {annonce.taille}
+							</CardSubtitle>
 						</CardBody>
 						<CardBody>
-							<CardText>{annonce.description}</CardText>
+							<CardText>Description: {annonce.description}</CardText>
 							<Button
 								color="primary"
 								onClick={() => this.ajouterAuPanier(annonce)}
@@ -116,14 +122,13 @@ export default class ClientDashboard extends Component {
 						</CardBody>
 					</Card>
 				</Col>
-				
 			);
 		});
 
 		return (
 			<div>
-				<Container >
-						<Row>{annonces}</Row>
+				<Container>
+					<Row>{annonces}</Row>
 				</Container>
 			</div>
 		);

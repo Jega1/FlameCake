@@ -54,11 +54,26 @@ export default class AllAnnounce extends Component {
 							alt="Card image cap"
 						/>
 						<CardBody>
-							<CardTitle>{annonce.nom}</CardTitle>
-							<CardSubtitle>{annonce.prix}$</CardSubtitle>
+							<CardTitle style={{ fontSize: "1.5rem", color: "#f59432" }}>
+								Nom: {annonce.nom}
+							</CardTitle>
+							<CardText style={{ fontSize: "1.5rem", color: "green" }}>
+								Prix{" : "}
+								{annonce.prix}
+							</CardText>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>
+								Taille{" : "}
+								{annonce.taille}
+							</CardSubtitle>
+							<CardSubtitle style={{ fontSize: "1.5rem" }}>
+								Catégorie{" : "}
+								{annonce.categorie}
+							</CardSubtitle>
 						</CardBody>
 						<CardBody>
-							<CardText>{annonce.description.substring(0, 100)}</CardText>
+							<CardText style={{ fontSize: "1.5rem" }}>
+								{annonce.description.substring(0, 100)}
+							</CardText>
 							<Button
 								color="primary"
 								onClick={() => (window.location = "/ClientLogin")}
@@ -66,7 +81,8 @@ export default class AllAnnounce extends Component {
 								Ajouter au panier
 							</Button>
 							<Button
-								color="success"
+								style={{ backgroundColor: "#9d2363" }}
+					
 								onClick={() => (window.location = "/annonce/" + annonce._id)}
 							>
 								Voir le produit
@@ -86,4 +102,3 @@ export default class AllAnnounce extends Component {
 		);
 	}
 }
-

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import Button from "@material-ui/core/Button";
-
+import Footer from "../../Components/Footer";
 import Api from "../../Services/Api";
 
 export default class ClientInscription extends Component {
@@ -50,6 +50,7 @@ export default class ClientInscription extends Component {
 
 	render() {
 		return (
+			<div>
 			<div
 				style={{
 					backgroundColor: "whitesmoke",
@@ -58,16 +59,13 @@ export default class ClientInscription extends Component {
 					padding: " 4rem"
 				}}
 			>
-				<h4 style={{ textAlign: "center" }}>Inscrivez -vous</h4>
+				<h4 style={{ textAlign: "center", paddingTop:"10rem" }}>Inscrivez -vous</h4>
 
 				<Form style={{ backgroundColor: "" }}>
 					<FormGroup
 						row
 						style={{
-							background: "red",
-							width: "80%",
-							margin: "auto",
-							padding: "4rem"
+						
 						}}
 					>
 						<Label sm={2}>Nom</Label>
@@ -169,7 +167,10 @@ export default class ClientInscription extends Component {
 						<Alert color="success">{this.state.message}</Alert>
 					) : null}
 				</Form>
+				
 			</div>
+			<Footer/>
+				</div >
 		);
 	}
 }

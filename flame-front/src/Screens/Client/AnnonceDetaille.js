@@ -53,13 +53,19 @@ export default class AnnonceDetaille extends Component {
 	render() {
 		if (this.state.annonce) {
 			return (
-				<Row style={{ textAlign: "center", width: "80%", paddingTop: "10rem", margin:"auto" }}>
-					<Col md="4" >
+				<Row
+					style={{
+						textAlign: "center",
+						width: "80%",
+						paddingTop: "10rem",
+						margin: "auto"
+					}}
+				>
+					<Col md="4">
 						<Card
 							style={{
-							backgrounColor: "whitesmoke",
-							boxShadow: "0px 20px 25px rgba(0, 0, 0, 0.42)"
-				
+								backgrounColor: "whitesmoke",
+								boxShadow: "0px 20px 25px rgba(0, 0, 0, 0.42)"
 							}}
 						>
 							<CardImg
@@ -72,27 +78,27 @@ export default class AnnonceDetaille extends Component {
 								<CardTitle style={{ fontSize: "1.5rem", background: "pink" }}>
 									Nom de gateau : {this.state.annonce.nom}
 								</CardTitle>
-								<CardSubtitle>{this.state.annonce.prix}$</CardSubtitle>
+								<CardText style={{ fontSize: "1.5rem", Color: "green" }}>
+									Prix{" : "}
+									{this.state.annonce.prix}
+								</CardText>
 							</CardBody>
 							<CardText>{this.state.annonce.description}</CardText>
-							<CardBody style={{ display: "flex", justifyContent: "space-around" }}>
-								
-							
-									<Button
-										color="primary"
-										onClick={() => this.ajouterAuPanier(this.state.annonce)}
-									>
-										Ajouter au panier
+							<CardBody
+								style={{ display: "flex", justifyContent: "space-around" }}
+							>
+								<Button
+									color="primary"
+									onClick={() => this.ajouterAuPanier(this.state.annonce)}
+								>
+									Ajouter au panier
 								</Button>
-									<Button
-										color="primary"
-										onClick={() => (window.location = "/clientDashboard")}
-									>
-										Retour
+								<Button
+									color="primary"
+									onClick={() => (window.location = "/clientDashboard")}
+								>
+									Retour
 								</Button>
-									
-					
-							
 							</CardBody>
 						</Card>
 					</Col>

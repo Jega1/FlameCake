@@ -64,7 +64,7 @@ router.post("/uploadFile", upload.single("myImage"), (req, res) => {
 				url: result.secure_url
 			});
 		}
-		// une fois que l'image a été téléchargée dans le cloud, on la supprime de notre dossier pour ne pas occuper de la place pour rien
+		// une fois que l'image a été téléchargée dans le cloud, on la supprime de mon dossier
 		// toutes les photos sont stockées dans le cloud
 		fs.unlinkSync(req.file.destination + req.file.path);
 		console.log(result);
@@ -100,8 +100,6 @@ function checkUser(email, password) {
 		});
 	});
 }
-
-///////////////////////////////////
 
 // route pour créer l'utilisateur (1)
 router.post("/registerEnterprise", (req, res, next) => {
@@ -230,7 +228,6 @@ router.post("/updateAnnonce", (req, res) => {
 });
 
 router.post("/getAnnonces", (req, res) => {
-
 	Annonce.find({ enterprise: req.body.enterprise._id }, (err, annonces) => {
 		if (err) {
 			res.send(401);

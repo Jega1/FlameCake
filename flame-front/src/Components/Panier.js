@@ -100,7 +100,8 @@ export default class Panier extends Component {
 									
 										style={{ fontSize: "1.5rem", width: "100%" }}
 									>
-										{article.nom}<Badge pill style={{ backgroundColor: "#f59432" }}>{article.prix} $</Badge>
+										{article.nom}{" "}{" "}<Badge pill style={{ backgroundColor: "#f59432" }}>{article.prix} €</Badge>
+										{" "}{"  "}{" "}{" "}{" "}{" "}
 										<Button
 											color="danger"
 											onClick={() => this.deleteItemPanier(index)}
@@ -119,7 +120,7 @@ export default class Panier extends Component {
 								(acc, current) => acc + current.prix,
 								0
 							)}{" "}
-							$
+							€
 						</h1>
 						<Button color="primary" onClick={this.commander}>
 							Commander

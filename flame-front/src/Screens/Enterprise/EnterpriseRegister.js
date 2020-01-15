@@ -66,7 +66,7 @@ export default class EnterpriseRegister extends Component {
 						padding: " 4rem"
 					}}
 				>
-					<h3 style={{ textAlign: "center" }}>Trouvez tous les gateaux !</h3>
+					<h4 style={{ textAlign: "center", paddingTop: "10rem" }}>Inscrivez -vous mettez vos produits</h4>
 
 					<Form style={{ backgroundColor: "" }}>
 						<FormGroup row>
